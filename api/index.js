@@ -3,20 +3,20 @@ import express from 'express'
 const app = express();
 
 
-app.get("/test", (req, res) => {
+// app.get("/test", (req, res) => {
 
-  const months = 48;
-  const tuitionFee = 4000;
-  const livingCost = 10000;
+//   const months = 48;
+//   const tuitionFee = 4000;
+//   const livingCost = 10000;
 
-  return res.json({
-    total: `Total Cost for course completion is:${months * tuitionFee + livingCost * months} `
-  })
+//   return res.json({
+//     total: `Total Cost for course completion is:${months * tuitionFee + livingCost * months} `
+//   })
 
 
 
-  res.json()
-})
+//   res.json()
+// })
 
 
 
