@@ -1,27 +1,24 @@
-import express from 'express'
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 
 
-// app.get("/test", (req, res) => {
 
-//   const months = 48;
-//   const tuitionFee = 4000;
-//   const livingCost = 10000;
-
-//   return res.json({
-//     total: `Total Cost for course completion is:${months * tuitionFee + livingCost * months} `
-//   })
-
-
-
-//   res.json()
-// })
-
-
-
-
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log('Connected to MongoDb');
+  })
+  .catch((err) => {
+    console.error('Failed to connect to MongoDb:', err);
+  });
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
-})
+});
+
