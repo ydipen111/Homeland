@@ -7,16 +7,16 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   email: {
-    type: string,
+    type: String,
     required: true,
     unique: true
   },
   password: {
-    type: string,
+    type: String,
     requied: true
   }
 
 }, { timestamps: true });
 
-const User = mangoose.model('user', userSchema);
+const User = mongoose.model('user', userSchema);
 export default User;
