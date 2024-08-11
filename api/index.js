@@ -26,11 +26,20 @@ server.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
 
+
 server.use(express.json());
 
 server.use('/api/user', userRouter) //user router
-
 server.use('/api/auth', AuthRouter) //auth router
+
+// Error handling middleware
+server.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode).json({ message: err.message || 'Something went wrong!' });
+});
+
+
+
 
 
 
