@@ -19,10 +19,7 @@ function App() {
         element: <Home />
       },
 
-      {
-        path: 'Profile',
-        element: <Profile />
-      },
+
       {
         path: 'About',
         element: <About />
@@ -34,7 +31,12 @@ function App() {
       {
         path: 'SignUp',
         element: <SignUp />
-      }
+      },
+      {
+        path: 'Profile',
+        element: <Profile />
+      },
+
       ]
     },
 

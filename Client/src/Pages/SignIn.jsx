@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 const SignIn = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormdata] = useState({}); // Correct initialization of useState
 
   const handleChange = (e) => {
-    setFormData({
+    setFormdata({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault();
 
     try {
-      const res = await fetch('/api/auth/SignIn', {
+      const res = await fetch('/api/auth/signIn', { // Ensure endpoint matches the server
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -24,23 +24,22 @@ const SignIn = () => {
       });
 
       if (!res.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(`Network response was not ok. Status: ${res.status}`);
       }
 
       const data = await res.json();
-      console.log('Success:', data);
-      // Handle success (e.g., redirect to a different page or show a success message)
+      console.log(data);
+
     } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-      // Handle error (e.g., show an error message)
+      console.error('Error:', error.message);
     }
   };
 
-  console.log('Form Data:', formData);
-
   return (
     <div className='p-3 max-w-lg mx-auto'>
-      <h1 className='text-3xl text-center font-semibold my-7'>Sign up</h1>
+      <h1 className='text-3xl text-center font-semibold my-7'>Sign In
+        <span> <NavLink to='/Profile'>Profile</NavLink></span>
+      </h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <input
           onChange={handleChange}
@@ -51,26 +50,23 @@ const SignIn = () => {
         />
         <input
           onChange={handleChange}
-          type="email" // Change to 'email' for validation
+          type="email"
           placeholder='Email'
           className='border p-3 rounded-lg'
           id='email'
         />
         <input
           onChange={handleChange}
-          type="password" // Change to 'password' for security
+          type="password"
           placeholder='Password'
           className='border p-3 rounded-lg'
           id='Password'
         />
-        <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80'>Sign up</button>
+        <button className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-80'>Sign In</button>
+
       </form>
-      <div className='flex gap-2 mt-4'>
-        <p className=''>Have an account</p>
-        <NavLink to={"/SignUp"}>
-          <span className='text-blue-700'>Sign in</span>
-        </NavLink>
-      </div>
+      <Outlet />
+
     </div>
   );
 };
