@@ -35,7 +35,12 @@ server.use('/api/auth', AuthRouter) //auth router
 // Error handling middleware
 server.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
-  res.status(statusCode).json({ message: err.message || 'Something went wrong!' });
+  const message = err.message || 'Interna server Error';
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
 });
 
 

@@ -1,13 +1,12 @@
 import './App.css'
 import { BrowserRouter, Routes, Route, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Pages/Home'
-import SignIn from './Pages/SignIn'
 import SignUp from './Pages/SignUp'
 import About from './Pages/About'
 import Profile from './Pages/Profile'
 import Header from './Components/Header'
-import Root from 'postcss/lib/root'
 import RootLayouts from './rootlayouts/RootLayouts'
+import SignIn from './Pages/SignIn'
 
 function App() {
   const router = createBrowserRouter([
@@ -25,13 +24,13 @@ function App() {
         element: <About />
       },
       {
-        path: 'SignIn',
-        element: <SignIn />
-      },
-      {
-        path: 'SignUp',
+        path: 'sign-up',
         element: <SignUp />
       },
+      // {
+      //   path: 'Sign-in',
+      //   element: <SignIn />
+      // },
       {
         path: 'Profile',
         element: <Profile />

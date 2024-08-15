@@ -25,7 +25,7 @@ const Header = () => {
             <li className='hidden sm:inline text-slate-700 hover:underline'>About</li>
           </NavLink>
 
-          <NavLink to='/SignIn'>
+          <NavLink to='sign-up'>
             <li className='hidden sm:inline focus:no-underline text-slate-700 hover:underline'>Sign in</li>
           </NavLink>
 
